@@ -1,22 +1,10 @@
 import Head from 'next/head';
+import Dashboard from '../layout/dashboard';
 
 const Home = () => (
-  <div>
-    <Head>
-      <title>Create Next App</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-
-    <main>
-      <h1>
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
-
-      <p>
-        Get started by editing <code>pages/index.js</code>
-      </p>
-    </main>
-  </div>
+  <Dashboard>
+    <h1>HELLO WORLD</h1>
+  </Dashboard>
 );
 
 export default Home;
