@@ -8,18 +8,32 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import ForumIcon from '@mui/icons-material/Forum';
 import Box from '@mui/material/Box';
+import styled from '@emotion/styled';
+
+const IconWrapper = styled.div`
+  color: gray;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  svg {
+    font-size: 16px;
+  }
+`;
 
 export default function RecipeReviewCard() {
   return (
     <Card sx={{ maxWidth: '100%', marginTop: '3px' }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
+          <Avatar
+            sx={{ bgcolor: red[500] }}
+            aria-label="recipe"
+            src="/idris.png"
+            alt="Agboola Idris"
+          ></Avatar>
         }
         action={
           <IconButton aria-label="settings">
@@ -39,13 +53,19 @@ export default function RecipeReviewCard() {
           </Typography>
         </CardContent>
 
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
+        <CardActions sx={{ paddingY: '0', marginY: '0' }}>
+          <IconWrapper>
+            <IconButton>
+              <FavoriteIcon />
+            </IconButton>
+            <Typography variant="body2">100</Typography>
+          </IconWrapper>
+          <IconWrapper>
+            <IconButton>
+              <ForumIcon />
+            </IconButton>
+            <Typography variant="body2">100</Typography>
+          </IconWrapper>
         </CardActions>
       </Box>
     </Card>

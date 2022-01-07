@@ -5,8 +5,8 @@ import Card from '../components/shared/card';
 
 const Home = () => (
   <Dashboard>
-    <Grid container spacing={2}>
-      <Grid md={3} sx={{ display: { xs: 'none', md: 'block' } }}>
+    <Grid container rowSpacing={2} sx={{ width: '100%' }}>
+      <Grid md={3} item sx={{ display: { xs: 'none', md: 'block' } }}>
         gdgdhshshshshshhsh
       </Grid>
       <Grid item xs={12} md={6}>
@@ -15,7 +15,7 @@ const Home = () => (
         <Card />
         <Card />
       </Grid>
-      <Grid md={3} sx={{ display: { xs: 'none', md: 'block' } }}>
+      <Grid item md={3} sx={{ display: { xs: 'none', md: 'block' } }}>
         gdgdhshshshshshhsh
       </Grid>
     </Grid>
