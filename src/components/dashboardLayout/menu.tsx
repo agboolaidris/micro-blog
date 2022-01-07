@@ -35,10 +35,12 @@ export default function AccountMenu() {
         </Tooltip>
       </Box>
       <Menu
+        disableScrollLock={true}
         anchorEl={anchorEl}
         id="account-menu"
         open={open}
         onClose={handleClose}
+        sx={{ paddingRight: '100px' }}
         onClick={handleClose}
         PaperProps={{
           elevation: 0,

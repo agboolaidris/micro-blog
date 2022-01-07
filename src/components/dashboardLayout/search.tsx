@@ -1,69 +1,94 @@
 import React, { useState } from 'react';
 import { alpha, Theme } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
+import ClearIcon from '@mui/icons-material/Clear';
 import InputBase from '@mui/material/InputBase';
 import styled from '@emotion/styled';
-import { Box } from '@mui/material';
+import { css } from '@emotion/react';
+import { Box, Dialog } from '@mui/material';
 
-const SearchWrapper = styled.div<{ theme?: Theme }>`
-  width: 500px;
+const SearchWrapper = styled.div<{ theme?: Theme; open?: boolean }>`
+  width: 100%;
+  max-width: auto;
   position: relative;
+  display: flex;
+  align-items: center;
+  padding: ${({ theme }) => theme.spacing(0, 1)};
   border-radius: ${({ theme }) => theme.shape.borderRadius};
   background-color: ${({ theme }) => alpha(theme.palette.common.white, 0.15)};
-  margin-right: ${({ theme }) => theme.spacing(2)};
-  margin-left: 0;
   &:hover {
     background-color: ${({ theme }) => alpha(theme.palette.common.white, 0.25)};
   }
-`;
 
-const SearchIconWrapper = styled.div<{ theme?: Theme }>`
-  padding: ${({ theme }) => theme.spacing(0, 2)};
-  height: 100%;
-  position: absolute;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${({ open, theme }) =>
+    open &&
+    css`
+      background-color: ${alpha(theme.colors.toolbar, 0.15)};
+      &:hover {
+        background-color: ${alpha(theme.colors.toolbar, 0.25)};
+      }
+    `}
 `;
 
 const StyledInputBase = styled(InputBase)<{ theme?: Theme }>`
   color: inherit;
   width: 100%;
   .MuiInputBase-input {
-    padding: ${({ theme }) => theme.spacing(1, 1, 1, 0)};
-    padding-left: ${({ theme }) => `calc(1em + ${theme.spacing(4)})`};
+    padding: ${({ theme }) => theme.spacing(1)};
     transition: ${({ theme }) => theme.transitions.create('width')};
   }
 `;
 
-const SearchOutput = styled(Box)<{ open: boolean }>`
-  position: absolute;
-  top: 100px;
-  background: red;
+const DialogBox = styled(Box)<{ theme?: Theme }>`
+  padding: ${({ theme }) => theme.spacing(2)};
+  background: ${({ theme }) => theme.colors.background};
+  min-height: 100%;
+  .box-search {
+    width: 800px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
 `;
 
 function Search() {
+  //const theme = useTheme();
   const [open, setopen] = useState(false);
 
-  const handleChange = () => {
-    setopen(true);
-  };
-
   return (
-    <>
+    <Box sx={{ maxWidth: 'auto', width: '500px', position: 'relative' }}>
       <SearchWrapper>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
+        <SearchIcon />
+
         <StyledInputBase
           placeholder="Search…"
           inputProps={{ 'aria-label': 'search' }}
-          onChange={handleChange}
+          onClick={() => setopen(true)}
+          tabIndex={10}
         />
+        <Dialog
+          fullScreen
+          open={open}
+          disableScrollLock={true}
+          onClose={() => setopen(false)}
+        >
+          <DialogBox>
+            <div className="box-search">
+              <SearchWrapper open={open}>
+                <SearchIcon />
+
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ 'aria-label': 'search' }}
+                />
+
+                <ClearIcon onClick={() => setopen(false)} />
+              </SearchWrapper>
+              <h1>HEKKOW</h1>
+            </div>
+          </DialogBox>
+        </Dialog>
       </SearchWrapper>
-      <SearchOutput open={open}>BOOO</SearchOutput>
-    </>
+    </Box>
   );
 }
 

@@ -1,11 +1,13 @@
 import React, { ReactNode } from 'react';
-import { Box, Container } from '@mui/material';
+import { Box as Wrap, Container } from '@mui/material';
 import Toobar from '../components/dashboardLayout/toolbar';
 import { useTheme } from '@mui/material/styles';
+import styled from '@emotion/styled';
 
 interface Props {
   children: ReactNode;
 }
+const Box = styled(Wrap)``;
 
 function Dashboard({ children }: Props) {
   const theme = useTheme();
@@ -18,7 +20,10 @@ function Dashboard({ children }: Props) {
       }}
     >
       <Toobar />
-      <Container>{children}</Container>
+
+      <Container sx={{ marginTop: '80px', paddingX: '0', paddingY: '5px' }}>
+        {children}
+      </Container>
     </Box>
   );
 }
