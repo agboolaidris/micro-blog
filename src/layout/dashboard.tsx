@@ -18,7 +18,9 @@ function Dashboard({ children }: Props) {
       }}
     >
       <Toobar />
-      <Container>{children}</Container>
+      <Box sx={{ marginTop: '100px' }}>
+        <Container>{children}</Container>
+      </Box>
     </Box>
   );
 }

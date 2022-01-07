@@ -13,10 +13,10 @@ export default function PrimarySearchAppBar() {
   const theme = useTheme();
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar sx={{ background: theme.colors.toolbar }}>
+      <AppBar position="fixed">
+        <Toolbar sx={{ background: theme.colors.toolbar, height: '80px' }}>
           <Typography variant="h6" component="div" sx={{ mr: 2 }}>
-            MUI
+            TWOA
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Search />
