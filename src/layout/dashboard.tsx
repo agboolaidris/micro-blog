@@ -1,34 +1,24 @@
 import React, { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import { Theme } from '@mui/material/styles';
-import { Box, Grid } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import Toobar from '../components/dashboardLayout/toolbar';
-interface StyleProps {
-  primary?: string;
-  theme: Theme;
-}
-
-const Wrapper = styled(Box)<StyleProps>`
-  background: ${({ theme }) => theme.palette.primary.main};
-  padding: 20px;
-`;
+import { useTheme } from '@mui/material/styles';
 
 interface Props {
   children: ReactNode;
 }
 
 function Dashboard({ children }: Props) {
+  const theme = useTheme();
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        background: theme.colors.background,
+        minHeight: '100vh',
+      }}
+    >
       <Toobar />
-      <Grid container sx={{ pb: '50px' }}>
-        <Grid item lg={4}>
-          HHHHH
-        </Grid>
-        <Grid item lg={8}>
-          XL
-        </Grid>
-      </Grid>
+      <Container>{children}</Container>
     </Box>
   );
 }
