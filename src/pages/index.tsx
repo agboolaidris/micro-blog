@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import Head from 'next/head';
 import Dashboard from '../layout/dashboard';
-import Card from '../components/shared/card';
+import Card from '../components/shared/postCard';
 
 const Home = () => (
   <Dashboard>
