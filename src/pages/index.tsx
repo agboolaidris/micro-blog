@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Dashboard from '../layout/dashboard';
 import PostCard from '../components/shared/postCard';
 import UserCard from '../components/shared/userCard';
+import TrendCard from '../components/shared/trendCard';
 
 const Home = () => (
   <Dashboard>
@@ -17,7 +18,7 @@ const Home = () => (
         <PostCard />
       </Grid>
       <Grid item md={3} sx={{ display: { xs: 'none', md: 'block' } }}>
-        gdgdhshshshshshhsh
+        <TrendCard />
       </Grid>
     </Grid>
   </Dashboard>
