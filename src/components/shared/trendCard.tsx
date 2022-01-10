@@ -98,6 +98,18 @@ function TrendCard() {
           </Tooltip>
         </IconButton>
       </ChildCard>
+            <ChildCard>
+        <Box>
+          <p className="caption">Technology .trending</p>
+          <p className="trend">Javascript</p>
+          <p className="caption">4.4k posts</p>
+        </Box>
+        <IconButton size="small" sx={{ height: '80%' }}>
+          <Tooltip title="more">
+            <MoreHorizIcon />
+          </Tooltip>
+        </IconButton>
+      </ChildCard>
       <ChildCard>
         <Box>
           <p className="caption">Technology .trending</p>
