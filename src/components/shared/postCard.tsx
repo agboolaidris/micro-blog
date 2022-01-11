@@ -1,24 +1,25 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import MUICard from '@mui/material/Card';
 import { useTheme, Theme } from '@mui/material/styles';
 import {
   Divider,
-  Modal,
   Dialog,
-  DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   Typography,
   Box,
   Avatar,
   Button,
+  IconButton,
 } from '@mui/material';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
 import ImageIcon from '@mui/icons-material/Image';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import CloseIcon from '@mui/icons-material/Close';
+import LanguageIcon from '@mui/icons-material/Language';
+import Editor from './editor';
 
 const Card = styled(MUICard)<{ theme?: Theme; open?: boolean }>`
   box-shadow: ${({ theme }) => theme.shadows[3]};
@@ -42,22 +43,14 @@ const Input = styled.input<{ theme?: Theme; open?: boolean }>`
   }
 `;
 
-const ModalCard = styled(MUICard)<{ theme?: Theme; open?: boolean }>`
-  box-shadow: ${({ theme }) => theme.shadows[3]};
-  border-radius: 3px;
-  padding: ${({ theme }) => theme.spacing(2)};
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%);
-`;
-
 export default function PostCard() {
-  const [open, setOpen] = React.useState(false);
+  const [openModal, setModalOpen] = useState(false);
+
   const theme = useTheme();
   const handleClose = () => {
-    setOpen(false);
+    setModalOpen(false);
   };
+
   return (
     <>
       <Card>
@@ -72,7 +65,7 @@ export default function PostCard() {
           <Avatar></Avatar>
           <Input
             placeholder="what's is on your mind, Idris?"
-            onKeyDown={() => setOpen(true)}
+            onKeyDown={() => setModalOpen(true)}
           />
         </Box>
         <Divider sx={{ marginY: '10px' }} />
@@ -112,33 +105,50 @@ export default function PostCard() {
         </Box>
       </Card>
       <Dialog
-        open={open}
+        open={openModal}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        sx={{ maxWidth: '100%' }}
       >
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">
-            {"Use Google's location service?"}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              Let Google help apps determine location. This means sending
-              anonymous location data to Google, even when no apps are running.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}>Disagree</Button>
-            <Button onClick={handleClose} autoFocus>
-              Agree
-            </Button>
-          </DialogActions>
-        </Dialog>
+        <DialogTitle id="alert-dialog-title" sx={{ textAlign: 'center' }}>
+          Create Post
+          <IconButton
+            onClick={handleClose}
+            sx={{
+              position: 'absolute',
+              right: '20px',
+              top: '10px',
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <Divider sx={{ marginX: '20px' }} />
+        <DialogContent sx={{ width: { sm: '500px', md: '600px' } }}>
+          <Box
+            sx={{
+              display: 'flex',
+              width: '100%',
+            }}
+          >
+            <Avatar></Avatar>
+            <Box sx={{ marginLeft: '10px' }}>
+              <Typography>Idris Ishola Agboola</Typography>
+              <Button
+                size="small"
+                variant="contained"
+                color="inherit"
+                sx={{ bgcolor: theme.palette.grey[100] }}
+                startIcon={<LanguageIcon />}
+                endIcon={<ArrowDropDownIcon />}
+              >
+                public
+              </Button>
+            </Box>
+          </Box>
+          <Editor />
+        </DialogContent>
       </Dialog>
     </>
   );
