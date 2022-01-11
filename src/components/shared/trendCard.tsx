@@ -98,7 +98,7 @@ function TrendCard() {
           </Tooltip>
         </IconButton>
       </ChildCard>
-            <ChildCard>
+      <ChildCard>
         <Box>
           <p className="caption">Technology .trending</p>
           <p className="trend">Javascript</p>

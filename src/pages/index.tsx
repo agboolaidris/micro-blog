@@ -1,9 +1,10 @@
 import { Grid } from '@mui/material';
 import Head from 'next/head';
 import Dashboard from '../layout/dashboard';
-import PostCard from '../components/shared/postCard';
+import ContentCard from '../components/shared/contentCard';
 import UserCard from '../components/shared/userCard';
 import TrendCard from '../components/shared/trendCard';
+import PostCard from '../components/shared/postCard';
 
 const Home = () => (
   <Dashboard>
@@ -13,9 +14,10 @@ const Home = () => (
       </Grid>
       <Grid item xs={12} md={6}>
         <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
+        <ContentCard />
+        <ContentCard />
+        <ContentCard />
+        <ContentCard />
       </Grid>
       <Grid item md={3} sx={{ display: { xs: 'none', md: 'block' } }}>
         <TrendCard />
