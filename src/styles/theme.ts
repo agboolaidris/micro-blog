@@ -2,6 +2,11 @@ import { createTheme } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 
 const theme = createTheme({
+  typography: {
+    button: {
+      textTransform: 'none',
+    },
+  },
   colors: {
     background: '#F4F6FA',
     toolbar: '#5E6C86',
