@@ -9,12 +9,15 @@
     "test:ci": "jest --ci"
   },
   "dependencies": {
+    "@draft-js-plugins/editor": "^4.1.1",
+    "@draft-js-plugins/mention": "^5.1.0",
     "@emotion/babel-plugin": "^11.7.2",
     "@emotion/react": "^11.5.0",
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@mui/icons-material": "^5.0.5",
     "@mui/material": "^5.0.6",
+    "draft-js": "^0.11.7",
     "eslint-typescript": "^1.1.0",
     "next": "latest",
     "react": "^17.0.2",
@@ -25,6 +28,7 @@
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "12.0.0",
     "@testing-library/user-event": "13.2.1",
+    "@types/draft-js": "^0.11.8",
     "@types/jest": "^27.0.2",
     "@types/react": "^17.0.33",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
