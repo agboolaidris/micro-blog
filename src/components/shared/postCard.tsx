@@ -65,7 +65,7 @@ export default function PostCard() {
           <Avatar></Avatar>
           <Input
             placeholder="what's is on your mind, Idris?"
-            onKeyDown={() => setModalOpen(true)}
+            onClick={() => setModalOpen(true)}
           />
         </Box>
         <Divider sx={{ marginY: '10px' }} />
@@ -147,7 +147,7 @@ export default function PostCard() {
               </Button>
             </Box>
           </Box>
-          <Editor />
+          <Editor onClose={handleClose} />
         </DialogContent>
       </Dialog>
     </>
