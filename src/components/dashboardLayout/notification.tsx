@@ -1,18 +1,15 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import Logout from '@mui/icons-material/Logout';
 import Badge from '@mui/material/Badge';
 import { useTheme } from '@mui/material/styles';
 import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsActiveRounded';
-import { ChildCard } from '../shared/trendCard';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+
+import { AddFriendCard } from '../cards/friendCard';
+import { Typography } from '@mui/material';
 
 export default function NotificationMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -81,31 +78,11 @@ export default function NotificationMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <ChildCard sx={{ minWidth: '200px' }}>
-          <Box>
-            <p className="caption">sport .trending</p>
-            <p className="trend">CR7</p>
-            <p className="caption">20k posts</p>
-          </Box>
-          <IconButton size="small" sx={{ height: '80%' }}>
-            <Tooltip title="more">
-              <MoreHorizIcon />
-            </Tooltip>
-          </IconButton>
-        </ChildCard>
-        <ChildCard sx={{ minWidth: '200px' }}>
-          <Box>
-            <p className="caption">sport .trending</p>
-            <p className="trend">CR7</p>
-            <p className="caption">20k posts</p>
-          </Box>
-          <IconButton size="small" sx={{ height: '80%' }}>
-            <Tooltip title="more">
-              <MoreHorizIcon />
-            </Tooltip>
-          </IconButton>
-        </ChildCard>
+        <Typography sx={{ padding: '5px' }}>Friend Request</Typography>
         <Divider />
+        <AddFriendCard data={{ name: 'Idris Agbbola', stamp: '2 days ago' }} />
+        <AddFriendCard data={{ name: 'Idris Agbbola', stamp: '2 days ago' }} />
+        <AddFriendCard data={{ name: 'Idris Agbbola', stamp: '2 days ago' }} />
       </Menu>
     </React.Fragment>
   );

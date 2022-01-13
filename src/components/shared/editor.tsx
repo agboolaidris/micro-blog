@@ -1,4 +1,4 @@
-import React, {
+import {
   MouseEvent,
   ReactElement,
   useCallback,
@@ -127,11 +127,7 @@ export default function CustomMentionEditor({ onClose }: Props): ReactElement {
 
   return (
     <>
-      <EditorWrap
-        onClick={() => {
-          ref.current!.focus();
-        }}
-      >
+      <EditorWrap onClick={() => ref.current!.focus()}>
         <Editor
           editorKey={'editor'}
           editorState={editorState}
