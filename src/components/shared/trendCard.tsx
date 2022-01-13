@@ -16,7 +16,7 @@ const TrendCardStyled = styled(Card)<{ theme?: Theme }>`
   box-shadow: ${({ theme }) => theme.shadows[3]};
   border-radius: 3px;
 `;
-const ChildCard = styled.div<{ theme?: Theme }>`
+export const ChildCard = styled(Box)<{ theme?: Theme }>`
   padding: ${({ theme }) => theme.spacing(1)};
   display: flex;
   justify-content: space-between;

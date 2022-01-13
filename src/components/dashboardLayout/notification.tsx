@@ -8,6 +8,11 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
+import Badge from '@mui/material/Badge';
+import { useTheme } from '@mui/material/styles';
+import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsActiveRounded';
+import { ChildCard } from '../shared/trendCard';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 export default function NotificationMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -15,22 +20,27 @@ export default function NotificationMenu() {
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
+  const theme = useTheme();
   const handleClose = () => {
     setAnchorEl(null);
   };
   return (
     <React.Fragment>
-      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <Tooltip title="Account settings">
-          <IconButton
-            onClick={handleClick}
-            size="small"
-            sx={{ ml: 2 }}
-            aria-controls={open ? 'account-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
-          >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          textAlign: 'center',
+          color: 'white',
+        }}
+      >
+        <Tooltip title="notifications">
+          <IconButton onClick={handleClick}>
+            <Badge badgeContent={1000} color="error">
+              <NotificationsActiveRoundedIcon
+                sx={{ color: theme.palette.common.white }}
+              />
+            </Badge>
           </IconButton>
         </Tooltip>
       </Box>
@@ -71,18 +81,31 @@ export default function NotificationMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem>
-          <Avatar /> Profile
-        </MenuItem>
-
+        <ChildCard sx={{ minWidth: '200px' }}>
+          <Box>
+            <p className="caption">sport .trending</p>
+            <p className="trend">CR7</p>
+            <p className="caption">20k posts</p>
+          </Box>
+          <IconButton size="small" sx={{ height: '80%' }}>
+            <Tooltip title="more">
+              <MoreHorizIcon />
+            </Tooltip>
+          </IconButton>
+        </ChildCard>
+        <ChildCard sx={{ minWidth: '200px' }}>
+          <Box>
+            <p className="caption">sport .trending</p>
+            <p className="trend">CR7</p>
+            <p className="caption">20k posts</p>
+          </Box>
+          <IconButton size="small" sx={{ height: '80%' }}>
+            <Tooltip title="more">
+              <MoreHorizIcon />
+            </Tooltip>
+          </IconButton>
+        </ChildCard>
         <Divider />
-
-        <MenuItem>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Logout
-        </MenuItem>
       </Menu>
     </React.Fragment>
   );

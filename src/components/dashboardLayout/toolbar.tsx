@@ -24,8 +24,8 @@ export default function PrimarySearchAppBar() {
         <Box sx={{ flexGrow: 1 }} />
         <Search />
         <Box sx={{ flexGrow: 1 }} />
-        <AccountMenu />
         <NotificationMenu />
+        <AccountMenu />
       </Toolbar>
     </AppBar>
   );
