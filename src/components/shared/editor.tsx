@@ -17,7 +17,7 @@ import createMentionPlugin, {
 import mentions from '../../fixtures/mentions';
 import { Avatar, Box, Typography, Button, Divider } from '@mui/material';
 import styled from '@emotion/styled';
-import { Theme, useTheme } from '@mui/material/styles';
+import { Theme, useTheme, alpha } from '@mui/material/styles';
 import mentionsStyles from '../../styles/MentionsStyles.module.css';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
@@ -37,6 +37,15 @@ const EditorWrap = styled(Box)<{ theme?: Theme }>`
   .editor :global(.public-DraftEditor-content) {
     min-height: 140px;
     background-color: pink;
+  }
+`;
+
+const MentionListWrap = styled(Box)<{ theme?: Theme }>`
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  &:hover {
+    background: ${({ theme }) => alpha(theme.colors.toolbar, 0.1)};
   }
 `;
 
@@ -64,26 +73,24 @@ function Entry(props: EntryComponentProps): ReactElement {
   } = props;
 
   return (
-    <Box
-      {...parentProps}
-      sx={{ display: 'flex', '.hashtag': { color: 'red' } }}
-    >
+    <MentionListWrap {...parentProps}>
       {mention.avatar && (
         <Avatar className={theme?.mentionSuggestionsEntryAvatar}>
           <Image src={mention.avatar} alt={mention.name} layout="fill" />
         </Avatar>
       )}
-      <Box>
-        <Typography>{mention.name}</Typography>
-        <Typography>{mention.title}</Typography>
+      <Box sx={{ marginLeft: '10px' }}>
+        <Typography variant="subtitle2">{mention.name}</Typography>
+        <Typography sx={{ fontSize: '13px' }}>{mention.title}</Typography>
       </Box>
-    </Box>
+    </MentionListWrap>
   );
 }
 
 interface Props {
   onClose: () => void;
 }
+
 export default function CustomMentionEditor({ onClose }: Props): ReactElement {
   const ref = useRef<Editor>(null);
   const [editorState, setEditorState] = useState(() =>
@@ -142,7 +149,16 @@ export default function CustomMentionEditor({ onClose }: Props): ReactElement {
             // get the mention object selected
           }}
           entryComponent={Entry}
-          popoverContainer={({ children }) => <div>{children}</div>}
+          popoverContainer={({ children }) => (
+            <Box
+              sx={{
+                width: 'max-content',
+                backgroundColor: theme.colors.background,
+              }}
+            >
+              {children}
+            </Box>
+          )}
         />
       </EditorWrap>
       <Divider sx={{ marginY: '10px' }} />
@@ -151,33 +167,38 @@ export default function CustomMentionEditor({ onClose }: Props): ReactElement {
           display: 'flex',
           justifyContent: 'space-between',
           width: '100%',
+          flexDirection: { xs: 'column', md: 'row' },
         }}
       >
-        <Button
-          sx={{ color: theme.palette.grey[600] }}
-          startIcon={
-            <VideoCameraBackIcon
-              sx={{ color: theme.palette.secondary.light }}
-            />
-          }
-        >
-          Live Video
-        </Button>
-        <Button
-          sx={{ color: theme.palette.grey[600] }}
-          startIcon={<ImageIcon sx={{ color: theme.palette.warning.light }} />}
-        >
-          Photo / Video
-        </Button>
-        <Button
-          sx={{ color: theme.palette.grey[600] }}
-          startIcon={
-            <EmojiEmotionsIcon sx={{ color: theme.palette.error.light }} />
-          }
-        >
-          Feeling / Activities
-        </Button>
-        <Divider />
+        <Box>
+          <Button
+            sx={{ color: theme.palette.grey[600] }}
+            startIcon={
+              <VideoCameraBackIcon
+                sx={{ color: theme.palette.secondary.light }}
+              />
+            }
+          >
+            Live Video
+          </Button>
+          <Button
+            sx={{ color: theme.palette.grey[600] }}
+            startIcon={
+              <ImageIcon sx={{ color: theme.palette.warning.light }} />
+            }
+          >
+            Photo / Video
+          </Button>
+          <Button
+            sx={{ color: theme.palette.grey[600] }}
+            startIcon={
+              <EmojiEmotionsIcon sx={{ color: theme.palette.error.light }} />
+            }
+          >
+            Feeling / Activities
+          </Button>
+        </Box>
+        <Divider orientation="vertical" flexItem />
         <Button variant="contained" onClick={onClose}>
           Post
         </Button>
