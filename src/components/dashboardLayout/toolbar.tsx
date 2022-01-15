@@ -4,8 +4,9 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Search from './search';
-import PrivateMenu from './menu';
+import AccountMenu from './menu';
 import { useTheme } from '@mui/material/styles';
+import NotificationMenu from './notification';
 
 export default function PrimarySearchAppBar() {
   const theme = useTheme();
@@ -23,7 +24,8 @@ export default function PrimarySearchAppBar() {
         <Box sx={{ flexGrow: 1 }} />
         <Search />
         <Box sx={{ flexGrow: 1 }} />
-        <PrivateMenu />
+        <NotificationMenu />
+        <AccountMenu />
       </Toolbar>
     </AppBar>
   );

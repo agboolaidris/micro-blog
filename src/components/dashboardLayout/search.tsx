@@ -7,14 +7,14 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { Box, Dialog } from '@mui/material';
 
-const SearchWrapper = styled.div<{ theme?: Theme; open?: boolean }>`
+const SearchWrapper = styled(Box)<{ theme?: Theme; open?: boolean }>`
   width: 100%;
   max-width: auto;
   position: relative;
   display: flex;
   align-items: center;
   padding: ${({ theme }) => theme.spacing(0, 1)};
-  border-radius: ${({ theme }) => theme.shape.borderRadius};
+  border-radius: 50px;
   background-color: ${({ theme }) => alpha(theme.palette.common.white, 0.15)};
   &:hover {
     background-color: ${({ theme }) => alpha(theme.palette.common.white, 0.25)};
@@ -56,14 +56,15 @@ function Search() {
 
   return (
     <Box sx={{ maxWidth: 'auto', width: '500px', position: 'relative' }}>
-      <SearchWrapper>
-        <SearchIcon />
+      <SearchWrapper sx={{ width: { xs: 'max-content', md: '100%' } }}>
+        <SearchIcon sx={{ height: '40px' }} onClick={() => setopen(true)} />
 
         <StyledInputBase
           placeholder="Search…"
           inputProps={{ 'aria-label': 'search' }}
           onClick={() => setopen(true)}
           tabIndex={10}
+          sx={{ display: { md: 'block', xs: 'none' } }}
         />
         <Dialog
           fullScreen

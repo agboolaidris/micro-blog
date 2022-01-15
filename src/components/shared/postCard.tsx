@@ -105,6 +105,7 @@ export default function PostCard() {
         </Box>
       </Card>
       <Dialog
+        disableScrollLock={true}
         open={openModal}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
