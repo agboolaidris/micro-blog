@@ -17,11 +17,18 @@ const Home = () => (
           display: { xs: 'none', md: 'block' },
           position: 'sticky',
           top: '80px',
-          maxHeight: '100vh',
-          overflow: 'auto',
         }}
       >
-        <UserCard />
+        <Box
+          sx={{
+            position: 'sticky',
+            top: '80px',
+          }}
+        >
+          <UserCard />
+          <UserCard />
+          <UserCard />
+        </Box>
       </Grid>
       <Grid item xs={12} md={6}>
         <PostCard />
@@ -35,18 +42,25 @@ const Home = () => (
         <ContentCard />
       </Grid>
       <Grid item md={3} sx={{ display: { xs: 'none', md: 'block' } }}>
-        <TrendCard />
-        <ShadowBox>
-          <AddFriendCard
-            data={{ name: 'Idris Agbbola', stamp: '2 days ago' }}
-          />
-          <AddFriendCard
-            data={{ name: 'Adewuyi Babatunde', stamp: '12 days ago' }}
-          />
-          <AddFriendCard
-            data={{ name: 'Kelvin Adebanjo', stamp: '2 weeks ago' }}
-          />
-        </ShadowBox>
+        <Box
+          sx={{
+            position: 'sticky',
+            top: '80px',
+          }}
+        >
+          <TrendCard />
+          <ShadowBox>
+            <AddFriendCard
+              data={{ name: 'Idris Agbbola', stamp: '2 days ago' }}
+            />
+            <AddFriendCard
+              data={{ name: 'Adewuyi Babatunde', stamp: '12 days ago' }}
+            />
+            <AddFriendCard
+              data={{ name: 'Kelvin Adebanjo', stamp: '2 weeks ago' }}
+            />
+          </ShadowBox>
+        </Box>
       </Grid>
     </Grid>
   </Dashboard>
