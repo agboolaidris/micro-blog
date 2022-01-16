@@ -50,6 +50,7 @@ const StyledInputBase = styled(TextareaAutosize)<{ theme?: Theme }>`
   border: none;
   outline: none;
   padding-left: 3px;
+  resize: none;
   .MuiInputBase-input {
     padding: ${({ theme }) => theme.spacing(1)};
     transition: ${({ theme }) => theme.transitions.create('width')};
@@ -126,7 +127,7 @@ export default function ContentCard() {
               <SearchWrapper>
                 <StyledInputBase
                   aria-label="empty textarea"
-                  placeholder="Empty"
+                  placeholder="leave your comment"
                   minRows={1}
                 />
                 <IconButton>

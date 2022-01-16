@@ -54,6 +54,7 @@ export default function NotificationMenu() {
           sx: {
             overflow: 'visible',
             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+            maxWidth: '300px',
             mt: 1.5,
             '& .MuiAvatar-root': {
               width: 32,
@@ -80,7 +81,9 @@ export default function NotificationMenu() {
       >
         <Typography sx={{ padding: '5px' }}>Friend Request</Typography>
         <Divider />
-        <AddFriendCard data={{ name: 'Idris Agbbola', stamp: '2 days ago' }} />
+        <AddFriendCard
+          data={{ name: 'Bashiru Ayomide', stamp: '2 Minutes ago' }}
+        />
         <AddFriendCard data={{ name: 'Idris Agbbola', stamp: '2 days ago' }} />
         <AddFriendCard data={{ name: 'Idris Agbbola', stamp: '2 days ago' }} />
       </Menu>

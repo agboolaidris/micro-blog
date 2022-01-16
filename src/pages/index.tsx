@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Grid, Box } from '@mui/material';
 import Dashboard from '../layout/dashboard';
 import ContentCard from '../components/shared/contentCard';
 import UserCard from '../components/shared/userCard';
@@ -10,8 +10,25 @@ import { ShadowBox } from '../styles';
 const Home = () => (
   <Dashboard>
     <Grid container spacing={{ md: 2 }} sx={{ width: '100%' }}>
-      <Grid md={3} item sx={{ display: { xs: 'none', md: 'block' } }}>
-        <UserCard />
+      <Grid
+        md={3}
+        item
+        sx={{
+          display: { xs: 'none', md: 'block' },
+          position: 'sticky',
+          top: '80px',
+        }}
+      >
+        <Box
+          sx={{
+            position: 'sticky',
+            top: '80px',
+          }}
+        >
+          <UserCard />
+          <UserCard />
+          <UserCard />
+        </Box>
       </Grid>
       <Grid item xs={12} md={6}>
         <PostCard />
@@ -19,20 +36,31 @@ const Home = () => (
         <ContentCard />
         <ContentCard />
         <ContentCard />
+        <ContentCard />
+        <ContentCard />
+        <ContentCard />
+        <ContentCard />
       </Grid>
       <Grid item md={3} sx={{ display: { xs: 'none', md: 'block' } }}>
-        <TrendCard />
-        <ShadowBox>
-          <AddFriendCard
-            data={{ name: 'Idris Agbbola', stamp: '2 days ago' }}
-          />
-          <AddFriendCard
-            data={{ name: 'Idris Agbbola', stamp: '2 days ago' }}
-          />
-          <AddFriendCard
-            data={{ name: 'Idris Agbbola', stamp: '2 days ago' }}
-          />
-        </ShadowBox>
+        <Box
+          sx={{
+            position: 'sticky',
+            top: '80px',
+          }}
+        >
+          <TrendCard />
+          <ShadowBox>
+            <AddFriendCard
+              data={{ name: 'Idris Agbbola', stamp: '2 days ago' }}
+            />
+            <AddFriendCard
+              data={{ name: 'Adewuyi Babatunde', stamp: '12 days ago' }}
+            />
+            <AddFriendCard
+              data={{ name: 'Kelvin Adebanjo', stamp: '2 weeks ago' }}
+            />
+          </ShadowBox>
+        </Box>
       </Grid>
     </Grid>
   </Dashboard>

@@ -31,7 +31,7 @@ interface Props {
 export const AddFriendCard = ({ data, onAccept, onReject }: Props) => {
   return (
     <Wrap direction="row" spacing={1} sx={{ padding: 1 }}>
-      <Avatar>H</Avatar>
+      <Avatar>{data.name.charAt(0)}</Avatar>
       <Box>
         <Typography variant="body1" sx={{ lineHeight: '12px' }}>
           {data.name}{' '}
